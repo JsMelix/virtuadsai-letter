@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOOM Effect</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: green;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #doom-text {
+      font-size: 5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px green, 0 0 20px orange, 0 0 30px yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="doom-text">VirtuADSAI</div>
+
+  <script>
+    const text = document.getElementById("doom-text");
+    let size = 5;
+    let growing = true;
+
+    // Animate the "DOOM" text size
+    setInterval(() => {
+      if (growing) {
+        size += 0.5;
+        if (size >= 8) growing = false;
+      } else {
+        size -= 0.5;
+        if (size <= 5) growing = true;
+      }
+      text.style.fontSize = size + "rem";
+    }, 100);
+
+    // Add a flickering effect to the text
+    setInterval(() => {
+      const colors = ["green", "orange", "yellow", "white"];
+      text.style.color = colors[Math.floor(Math.random() * colors.length)];
+      text.style.textShadow = `0 0 10px ${text.style.color}, 0 0 20px orange, 0 0 30px yellow`;
+    }, 200);
+  </script>
+</body>
+</html>
